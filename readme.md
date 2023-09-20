@@ -5,7 +5,7 @@ The full project steps will be documented at [medium](https://medium.com/@jerryj
 Inspired by this site [30 species, 30 pieces](http://species-in-pieces.com/#). I was really fascinated by the 30 triangle pieces they used and created such beautiful art. Me being unartistic but good in coding thought why not try out different algo that can make similarly looking species, from just an image.
 
 Eventually an Image if fed into the system, the model gives out the position of "n" triangles with colour so that we can replicate it.
-![](./Assets/Aim_Workflow.png)
+![image](./Assets/Aim_Workflow.png)
 
 
 Also the transition on the 30 piece website is too cool, will replicate that too. Then later with different with polygons with sides >3 and higher triangles. Everything in the graphics world is just triangles, so we are certainly not limited by the chosen polygon shape.
