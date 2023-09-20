@@ -1,6 +1,7 @@
 # 30 pieces project
 The full project steps will be documented at [medium](https://medium.com/@jerryjohnthomas) soon.
 
+![](./Assets/Target.png)
 ## What?
 Inspired by this site [30 species, 30 pieces](http://species-in-pieces.com/#). I was really fascinated by the 30 triangle pieces they used and created such beautiful art. Me being unartistic but good in coding thought why not try out different algo that can make similarly looking species, from just an image.
 
