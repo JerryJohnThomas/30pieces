@@ -1,70 +1,42 @@
-# Getting Started with Create React App
+# 30 pieces project
+The full project steps will be documented at [medium](https://medium.com/@jerryjohnthomas) soon.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## What?
+Inspired by this site [30 species, 30 pieces](http://species-in-pieces.com/#). I was really fascinated by the 30 triangle pieces they used and created such beautiful art. Me being unartistic but good in coding thought why not try out different algo that can make similarly looking species, from just an image.
 
-## Available Scripts
+Eventually an Image if fed into the system, the model gives out the position of "n" triangles with colour so that we can replicate it.
+![](./Assets/Aim_Workflow.png)
 
-In the project directory, you can run:
 
-### `npm start`
+Also the transition on the 30 piece website is too cool, will replicate that too. Then later with different with polygons with sides >3 and higher triangles. Everything in the graphics world is just triangles, so we are certainly not limited by the chosen polygon shape.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+**THIS IS NOT A FILTER**. A filter is just add a matrix on top of the existing image, here we are trying to make a replication mechanism. 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## How?
+I hope that we can start off with NEAT ALgo, move to RL algo's for replication, neural style transfer. 
+Inspiration, I was once inspired by an youtube video attempting this on Mona Lisa in python, (ill put up reference if I find it)
+**I need more ideas desperately 😊**
 
-### `npm test`
+## Duration?
+Always "Coding in Progress".  
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## How you can contribute
+Ill try to provide all the utility functions that are required soon, so that we can experiment on it
+Either by Coding up Different Methods, or suggesting different things.
 
-### `npm run build`
+Follow the pattern.
+1. Rough Theory: Create a some scribbling or detailed steps in .md file inside Methods (place all assets in the Assets folder)
+2. Code it up: Each implementation in a different folder and you can add a route from the home page on to your root folder.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Fork this project, make your changes and raise a PR.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Add-ons:
+* If you need help drawing basic diagrams, use Canva [draw](https://www.canva.com/design/DAFu_nxg-6w/8ijozYRZpn4Qm0l-BABxOw/edit?ui=eyJBIjp7IkIiOnsiQiI6dHJ1ZX19LCJFIjp7IkE_IjoiUCJ9LCJHIjp7IkIiOnRydWV9fQ)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## Website instructions
+* `npm deploy` deploys it to Github pages - [here](https://jerryjohnthomas.github.io/30pieces/).
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<!-- ![](https://media.tenor.com/cTNHiNckhfIAAAAC/minions-strong.gif) -->
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<div class="tenor-gif-embed" data-postid="17504468" data-share-method="host" data-aspect-ratio="0.73896" data-width="50%"><a href="https://media.tenor.com/cTNHiNckhfIAAAAC/minions-strong.gif">Minions Strong GIF</a> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
