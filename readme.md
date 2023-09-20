@@ -4,7 +4,7 @@ The full project steps will be documented at [medium](https://medium.com/@jerryj
 ## What?
 Inspired by this site [30 species, 30 pieces](http://species-in-pieces.com/#). I was really fascinated by the 30 triangle pieces they used and created such beautiful art. Me being unartistic but good in coding thought why not try out different algo that can make similarly looking species, from just an image.
 
-![image](Assets/Aim_Workflow.png)
+![image](/Assets/Aim_Workflow.png)
 
 Eventually an Image if fed into the system, the model gives out the position of "n" triangles with colour so that we can replicate it.
 
@@ -38,6 +38,5 @@ Add-ons:
 ## Website instructions
 * `npm deploy` deploys it to Github pages - [here](https://jerryjohnthomas.github.io/30pieces/).
 
-<!-- ![](https://media.tenor.com/cTNHiNckhfIAAAAC/minions-strong.gif) -->
+![](https://media.tenor.com/cTNHiNckhfIAAAAC/minions-strong.gif)
 
-<div class="tenor-gif-embed" data-postid="17504468" data-share-method="host" data-aspect-ratio="0.73896" data-width="50%"><a href="https://media.tenor.com/cTNHiNckhfIAAAAC/minions-strong.gif">Minions Strong GIF</a> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
