@@ -4,8 +4,7 @@ The full project steps will be documented at [medium](https://medium.com/@jerryj
 ## What?
 Inspired by this site [30 species, 30 pieces](http://species-in-pieces.com/#). I was really fascinated by the 30 triangle pieces they used and created such beautiful art. Me being unartistic but good in coding thought why not try out different algo that can make similarly looking species, from just an image.
 
-<img src="Assets/Aim_Workflow.png" />
-
+<!-- <img src="Assets/Aim_Workflow.png" /> -->
 ![](https://i.ibb.co/4S0LVZY/Target-Image.png)
 
 Eventually an Image if fed into the system, the model gives out the position of "n" triangles with colour so that we can replicate it.
