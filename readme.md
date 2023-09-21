@@ -22,6 +22,9 @@ Inspiration, I was once inspired by an youtube video attempting this on Mona Lis
 ## Duration?
 Always "Coding in Progress".  
 
+## Where?
+Find the deployed Github page [here](https://jerryjohnthomas.github.io/30pieces/)
+
 ## How you can contribute
 Ill try to provide all the utility functions that are required soon, so that we can experiment on it
 Either by Coding up Different Methods, or suggesting different things.
