@@ -6,7 +6,7 @@ Inspired by this site [30 species, 30 pieces](http://species-in-pieces.com/#). I
 
 <img src="Assets/Aim_Workflow.png" />
 
-![](./Assets/Aim_Workflow.png)
+![](https://i.ibb.co/4S0LVZY/Target-Image.png)
 
 Eventually an Image if fed into the system, the model gives out the position of "n" triangles with colour so that we can replicate it.
 
