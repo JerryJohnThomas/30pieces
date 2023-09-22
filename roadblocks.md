@@ -10,3 +10,4 @@
     * adv: everything in the browser
     * disadv: crazy rl and other stuff from brute force is hard to do then
     
+* For the neat algo i can code up everything, for RL i will need back propogation for which ill need python and not js
