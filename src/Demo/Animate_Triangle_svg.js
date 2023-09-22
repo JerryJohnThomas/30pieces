@@ -18,7 +18,7 @@ function Animate_Triangle_svg() {
 
     const animateTriangle = () => {
         let startTime;
-        const duration = 5000; // Animation duration in milliseconds
+        const duration = 15000; // Animation duration in milliseconds
 
         const animationStep = (timestamp) => {
             if (!startTime) startTime = timestamp;
