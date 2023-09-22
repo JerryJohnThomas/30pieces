@@ -88,3 +88,4 @@ function Animate_Triangle_svg() {
 }
 
 export default Animate_Triangle_svg;
+// you may refer to my 30 pieces triangle conversation for more details 

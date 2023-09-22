@@ -30,7 +30,7 @@ function Animate_Tri_css() {
                     Limitations we cannot exactly determine a 3 point triangle with coordinates similar in css
                 </div>
                 <div className="roboto_text sd_text1 font_size_2_3 ">
-                    Also if too slow the Animations seem to be jittery
+                    Also if too slow the Animations seem to be jittery, possible fix: use "requestAnimationFrame" instead of setInterval(...,1)
                 </div>
             </div>
         </>
