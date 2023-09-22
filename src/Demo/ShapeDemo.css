@@ -80,6 +80,11 @@
 .sd_heading1 {
     margin: 20vh 0 5vh 0;
 }
+
+.sd_heading0{
+    margin: 10vh 0 5vh 0;
+}
+
 .sd_text1 {
     margin: 10px 0;
 }
@@ -90,6 +95,11 @@
     border-left: 50px solid transparent;
     border-right: 50px solid transparent;
     border-bottom: 100px solid #ffa931;
+}
+
+.triangle {
+  position: absolute;
+  border: none;
 }
 
 /* media query */

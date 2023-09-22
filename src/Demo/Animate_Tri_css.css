@@ -1,0 +1,13 @@
+
+.sd_triangle {
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 100px solid #ffa931;
+}
+
+.rect_frame{
+    border: 1px solid white;
+    overflow: hidden;
+}
