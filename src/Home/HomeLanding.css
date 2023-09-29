@@ -1,9 +1,21 @@
-.home_container{
+.home_container {
     display: flex;
     width: 60vw;
     height: 40vh;
     align-items: center;
     justify-content: space-around;
-    padding:5px;
-    
+    padding: 5px;
+}
+
+.flexDirection_rowB_cols {
+    flex-direction: row;
+}
+
+.button_pre_text{
+    text-align: center;
+}
+@media only screen and (max-width: 600px) {
+    .flexDirection_rowB_cols {
+        flex-direction: column;
+    }
 }
