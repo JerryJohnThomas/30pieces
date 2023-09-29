@@ -1,0 +1,9 @@
+.home_container{
+    display: flex;
+    width: 60vw;
+    height: 40vh;
+    align-items: center;
+    justify-content: space-around;
+    padding:5px;
+    
+}

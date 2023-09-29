@@ -5,6 +5,8 @@ import { Scrollbar } from "react-scrollbars-custom";
 import "./App.css";
 import { useState } from "react";
 import { useEffect } from "react";
+import CompareHome from "./ImageComparator/CompareHome";
+import HomeLanding from "./Home/HomeLanding";
 
 function App() {
     const [windowDimensions, setWindowDimensions] = useState({
@@ -51,7 +53,8 @@ let Everything_App = () => {
         <Router>
             <Routes>
                 <Route path="/30pieces" element={<ShapeDemo />} />
-                <Route path="/" element={<ShapeDemo />} />
+                <Route path="/train" element={<CompareHome />} />
+                <Route path="/" element={<HomeLanding />} />
             </Routes>
         </Router>
     );

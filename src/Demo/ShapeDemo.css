@@ -1,53 +1,5 @@
-:root {
-    --primary-color1: #785ebb;
-    --secondar-color1: #442c1e;
-    --tertiary-color1: #cb4c3a;
 
-    --extra-large-font-size: 68px;
-    --heading-font-size: 50px;
-    --large-font-size: 40px;
-    --medium-font-size: 23px;
-    --small-med-font-size: 20px;
-    --small-font-size: 17px;
-    --extra-small-font-size: 9px;
-}
 
-.font_color1 {
-    color: var(--primary-color1);
-}
-
-.font_color2 {
-    color: var(--secondar-color1);
-}
-
-.font_color3 {
-    color: var(--tertiary-color1);
-}
-
-.font_size5 {
-    font-size: var(--extra-large-font-size);
-}
-.font_size4 {
-    font-size: var(--heading-font-size);
-}
-.font_size3 {
-    font-size: var(--large-font-size);
-}
-.font_size_2_3 {
-    font-size: var(--small-med-font-size);
-}
-
-.font_size2 {
-    font-size: var(--small-font-size);
-}
-
-.font_size1 {
-    font-size: var(--extra-small-font-size);
-}
-
-.font_Large {
-    font-size: var(--large-font-size);
-}
 .container_fullscreen {
     width: 100vw;
     height: 100vh;
@@ -72,11 +24,21 @@
     flex-direction: column;
 }
 
+.flexDirection_row {
+    flex-direction: row;
+}
+
+.sd_container_gen {
+    display: flex;
+    align-items: center;
+}
+
 .sd_container1 {
     display: flex;
     align-items: center;
     flex-direction: column;
 }
+
 .sd_heading1 {
     margin: 20vh 0 5vh 0;
 }

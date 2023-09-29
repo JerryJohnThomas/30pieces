@@ -1,0 +1,23 @@
+.button_container{
+    background-color: white;
+    color: var(--seventh-color1);
+    width: 100px;
+    text-align: center;
+    padding:5px;
+    margin: 15px 5px;
+    text-transform: uppercase;
+    /* height: 100px; */
+    border-radius: 10px;
+    text-decoration: none;
+    transition: all 0.2s ease-in;
+}
+
+
+.button_container:hover {
+    color: var(--fifth-color1);
+}
+
+.no_decorate{
+    text-decoration: none;
+    color: inherit;
+}

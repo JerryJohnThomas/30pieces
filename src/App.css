@@ -20,3 +20,100 @@
 -ms-overflow-style: none;  /* IE and Edge */
 scrollbar-width: none;  /* Firefox */
 }
+
+:root {
+    --primary-color1: #785ebb;
+    --secondar-color1: #442c1e;
+    --tertiary-color1: #cb4c3a;
+    --fourth-color1: #F4696B;
+    --fifth-color1: #F68F6F;
+    --sixth-color1: #A0CADB;
+    --seventh-color1: #63C5AB;
+
+    --extra-large-font-size: 68px;
+    --heading-font-size: 50px;
+    --large-font-size: 40px;
+    --medium-font-size: 23px;
+    --small-med-font-size: 20px;
+    --small-font-size: 17px;
+    --extra-small-font-size: 9px;
+}
+
+.font_color1 {
+    color: var(--primary-color1);
+}
+
+.font_color2 {
+    color: var(--secondar-color1);
+}
+
+.font_color3 {
+    color: var(--tertiary-color1);
+}
+
+
+.font_color4 {
+    color: var(--fourth-color1);
+}
+
+.bg_color1 {
+    background-color: var(--primary-color1);
+}
+
+.bg_color2 {
+    background-color: var(--secondar-color1);
+}
+
+.bg_color3 {
+    background-color: var(--tertiary-color1);
+}
+
+
+.bg_color4 {
+    background-color: var(--fourth-color1);
+}
+
+.bg_color5 {
+    background-color: var(--fifth-color1);
+}
+
+.bg_color6 {
+    background-color: var(--sixth-color1);
+}
+
+.bg_color7 {
+    background-color: var(--seventh-color1);
+}
+
+
+
+
+.font_size5 {
+    font-size: var(--extra-large-font-size);
+}
+.font_size4 {
+    font-size: var(--heading-font-size);
+}
+.font_size3 {
+    font-size: var(--large-font-size);
+}
+
+.font_size_2_4 {
+    font-size: var(--medium-font-size);
+}
+
+.font_size_2_3 {
+    font-size: var(--small-med-font-size);
+}
+
+.font_size2 {
+    font-size: var(--small-font-size);
+}
+
+.font_size1 {
+    font-size: var(--extra-small-font-size);
+}
+
+.font_Large {
+    font-size: var(--large-font-size);
+}
