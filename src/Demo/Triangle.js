@@ -15,10 +15,10 @@ import React from "react";
 //     return <div className="triangle" style={triangleStyle}></div>;
 // }
 
-function Triangle({ x1, y1, x2, y2, x3, y3 }) {
+function Triangle({ x1, y1, x2, y2, x3, y3, rgba, width, height }) {
     return (
-        <svg width="200" height="200 " style={{ position: "absolute" }}>
-            <polygon points={`${x1},${y1} ${x2},${y2} ${x3},${y3}`} fill="#FF6F93" />
+        <svg width={width} height={height} style={{ position: "absolute" }}>
+            <polygon points={`${x1},${y1} ${x2},${y2} ${x3},${y3}`} fill={rgba ? rgba : "#FF6F93"} />
         </svg>
     );
 }

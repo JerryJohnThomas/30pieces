@@ -13,3 +13,7 @@
 * For the neat algo i can code up everything, for RL i will need back propogation for which ill need python and not js
 
 
+
+
+## day
+* create triangle class and create pokemon class
