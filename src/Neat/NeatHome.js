@@ -14,7 +14,7 @@ function NeatHome() {
     return (
         <>
             <div className="container_fullscreen playFair_text  sd_container1 bg_color7">
-                <div className="sd_heading0 font_size3">NEAT</div>
+                <div className="sd_heading9 font_size3">NEAT</div>
                 <div className="neat_container flexDirection_rowB_cols">
                     <div className="sketch_box_neat roboto_text flex_center flexDirection_col  font_size_2_3">
                         <div className="font_size_2_4 text_neat_sub"> Target Image</div>
@@ -27,8 +27,14 @@ function NeatHome() {
                                 backgroundColor: "peachpuff",
                             }}
                         >
-                            <img src={target1}  className="target_image_neat_container"/>
+                            <img src={target1} className="target_image_neat_container" />
                         </div>
+                    </div>
+
+                    <div className="NEAT_Controls font_size_2_4">
+                        <div className="NEAT_control_item">start</div>
+                        <div className="NEAT_control_item">stop</div>
+                        <div className="NEAT_control_item">Random</div>
                     </div>
                     <div className="sketch_box_neat roboto_text flex_center flexDirection_col  font_size_2_3">
                         <div className="font_size_2_4 text_neat_sub"> Training Image </div>

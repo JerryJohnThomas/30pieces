@@ -8,11 +8,31 @@
     
 }
 
+.sd_heading9{
+    margin: 5vh 0 2vh 0;
+}
+.NEAT_Controls{
+    width: 10vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.NEAT_control_item{
+    margin: 5px 2px;
+    padding:3px;
+    transition: all 0.1s ease-in;
+    text-transform: uppercase;
+    
+}
+.NEAT_control_item:hover{
+    color: aquamarine;
+}
 
 .sketch_box_neat{
     color: black;
     /* border: 1px solid aquamarine; */
-    /* background-color: white; */
+    /* background-color: peachpuff; */
     width: 100%;
     height: 100%;
 }
