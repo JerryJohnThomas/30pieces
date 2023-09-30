@@ -9,18 +9,7 @@ const sketch_width = sketch_size;
 
 let offset=30;
 function Triangle_svg() {
-    const setup = (p5, canvasParentRef) => {
-        // use parent to render the canvas in this ref (without that p5 will render the canvas outside of your component)
-        p5.createCanvas(sketch_height, sketch_width).parent(canvasParentRef);
-    };
 
-    const draw = (p5) => {
-        p5.background("#785EBB");
-        // p5.background(0);
-        p5.noStroke();
-        p5.fill("#F9E049");
-        p5.triangle(100 + offset, 100, 0 + offset, 100, 50 + offset, 0);
-    };
     return (
         <>
             <div className="container_fullscreen playFair_text  sd_container1">

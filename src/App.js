@@ -7,6 +7,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import CompareHome from "./ImageComparator/CompareHome";
 import HomeLanding from "./Home/HomeLanding";
+import NeatHome from "./Neat/NeatHome";
 
 function App() {
     const [windowDimensions, setWindowDimensions] = useState({
@@ -54,6 +55,7 @@ let Everything_App = () => {
             <Routes>
                 <Route path="/30pieces" element={<ShapeDemo />} />
                 <Route path="/train" element={<CompareHome />} />
+                <Route path="/neat" element={<NeatHome />} />
                 <Route path="/" element={<HomeLanding />} />
             </Routes>
         </Router>

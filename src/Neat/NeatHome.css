@@ -1,0 +1,32 @@
+.neat_container{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    /* background-color: aquamarine; */
+    width: 80vw;
+    height: 70vh;
+    
+}
+
+
+.sketch_box_neat{
+    color: black;
+    /* border: 1px solid aquamarine; */
+    /* background-color: white; */
+    width: 100%;
+    height: 100%;
+}
+
+.text_neat_sub{
+    margin:10px 0;
+    /* color: var(--primary-color1); */
+    /* color: aquamarine; */
+    font-weight: 300;
+}
+
+.target_image_neat_container{
+    object-fit: fill;
+    width: 100%;
+    height: 100%;
+    /* transform: scale(0.1); */
+}

@@ -14,6 +14,11 @@ function HomeLanding() {
                     </div>
 
                     <div className="roboto_text flex_center flexDirection_col font_size_2_3">
+                        <div className="button_pre_text font_size_2_4">NEAT Algo</div>
+                        <Button_custom text="here" url="/neat" />
+                    </div>
+
+                    <div className="roboto_text flex_center flexDirection_col font_size_2_3">
                         <div className="button_pre_text font_size_2_4">Train with Images</div>
                         <Button_custom text="here" url="/train" />
                     </div>

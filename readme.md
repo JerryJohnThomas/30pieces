@@ -32,6 +32,7 @@ Either by Coding up Different Methods, or suggesting different things.
 Follow the pattern.
 1. Rough Theory: Create a some scribbling or detailed steps in .md file inside Methods (place all assets in the Assets folder)
 2. Code it up: Each implementation in a different folder and you can add a route from the home page on to your root folder.
+3. You can either code it up in frontend - React or if your needs are in python you can code it up in python and and interface function which take in a target image and ill later connect the final model output to the frontend.
 
 Fork this project, make your changes and raise a PR.
 
@@ -39,8 +40,11 @@ Add-ons:
 * If you need help drawing basic diagrams, use Canva [draw](https://www.canva.com/design/DAFu_nxg-6w/8ijozYRZpn4Qm0l-BABxOw/edit?ui=eyJBIjp7IkIiOnsiQiI6dHJ1ZX19LCJFIjp7IkE_IjoiUCJ9LCJHIjp7IkIiOnRydWV9fQ)
 
 
+
+
 ## Website instructions
 * `npm deploy` deploys it to Github pages - [here](https://jerryjohnthomas.github.io/30pieces/).
 
 ![](https://media.tenor.com/cTNHiNckhfIAAAAC/minions-strong.gif)
 
+ 
