@@ -1,12 +1,22 @@
 .neat_container{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     /* background-color: aquamarine; */
     width: 80vw;
     height: 70vh;
     
 }
+.neat_container_full{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    /* background-color: aquamarine; */
+    width: 100vw;
+    height: 70vh;
+    
+}
+
 
 .sd_heading9{
     margin: 5vh 0 2vh 0;
@@ -50,4 +60,13 @@
     width: 100%;
     height: 100%;
     /* transform: scale(0.1); */
+}
+
+.absolute_grid_container{
+    position: absolute;
+    top:0;
+    left:0;
+    background-color: aqua;
+    width: 20vw;
+    height: 20vh;
 }

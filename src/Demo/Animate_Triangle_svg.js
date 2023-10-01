@@ -64,7 +64,6 @@ function Animate_Triangle_svg() {
             <div className="container_fullscreen playFair_text  sd_container1">
                 <div className="sd_heading0 font_size3">Lets Animate a Triangle with SVG</div>
                 <div className="rect_frame" style={{ width: sketch_width, height: sketch_height, marginBottom: "3vh" }}>
-                    {/* <div className="sd_triangle" style={{ marginLeft: `0px`, position: "absolute" }}></div> */}
                     <Triangle
                         x1={points.x1 + (targetPoints.x1 - points.x1) * animationProgress}
                         y1={points.y1 + (targetPoints.y1 - points.y1) * animationProgress}

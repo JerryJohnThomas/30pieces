@@ -15,7 +15,36 @@ const sketch_height = sketch_size;
 const sketch_width = sketch_size;
 const max_population = 1;
 
-function NeatHome() {
+function generateTriangleImage2(triangleDataArray) {
+    const canvas = document.createElement("canvas");
+    canvas.width = sketch_width;
+    canvas.height = sketch_height;
+    const context = canvas.getContext("2d");
+
+    // Clear the canvas
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    // Fill the canvas with a white background
+    context.fillStyle = "white";
+    context.fillRect(0, 0, canvas.width, canvas.height);
+
+    for (const triangleData of triangleDataArray) {
+        // Draw each triangle using the provided data
+        context.beginPath();
+        context.moveTo(triangleData.x1, triangleData.y1);
+        context.lineTo(triangleData.x2, triangleData.y2);
+        context.lineTo(triangleData.x3, triangleData.y3);
+        context.closePath();
+
+        // Fill the triangle with a color
+        context.fillStyle = triangleData.rgba || "black";
+        context.fill();
+    }
+
+    // Convert the canvas to a data URL
+    return canvas.toDataURL("image/png");
+}
+
+function SynthesizeDemo() {
     const [maxPolygons, setMaxPolygons] = useState(5); // Initial value
     let generationGlobal = new Generation(1, max_population, sketch_height, sketch_width, maxPolygons);
     const [generation, setGeneration] = useState(generationGlobal);
@@ -40,77 +69,72 @@ function NeatHome() {
         setMaxPolygons(value);
     };
 
-    function captureImage_class(class_name) {
-        // Find the target HTML element to capture
-        const targetElement = document.querySelector(class_name); // Replace with the appropriate selector
-
-        // Use html2canvas to capture the element as an image
-        html2canvas(targetElement).then((canvas) => {
-            // Convert the canvas to a data URL
-            const imageDataUrl = canvas.toDataURL("image/png");
-
-            // Create an "a" element to download the image
-            const a = document.createElement("a");
-            a.href = imageDataUrl;
-            a.download = "captured-image.png";
-            a.click();
-        });
-    }
-
-    function captureImage_ref() {
-        const container = trainingOut1.current;
-
-        // Use html2canvas to capture the element as an image
-        html2canvas(container).then((canvas) => {
-            // Convert the canvas to a data URL
-            const imageDataUrl = canvas.toDataURL("image/png");
-
-            // Create an "a" element to download the image
-            const a = document.createElement("a");
-            a.href = imageDataUrl;
-            a.download = "captured-image.png";
-            a.click();
-        });
-    }
-
-    const captureImage_dom = () => {
-        const container = trainingOut1.current;
-
-        // Use dom-to-image to capture the container as an image
-        domtoimage
-            .toPng(container)
-            .then((dataUrl) => {
-                // Create an "a" element to download the image
-                const a = document.createElement("a");
-                a.href = dataUrl;
-                a.download = "captured-image.png";
-                a.click();
-            })
-            .catch((error) => {
-                console.error("Error capturing image:", error);
-            });
+    // Example triangle data
+    const triangleData = {
+        x1: 10,
+        y1: 10,
+        x2: 50,
+        y2: 50,
+        x3: 90,
+        y3: 10,
+        rgba: "rgba(255, 0, 0, 0.5)", // Color with alpha
     };
+
+    const triangleData2 = [
+        {
+            x1: 10,
+            y1: 10,
+            x2: 50,
+            y2: 50,
+            x3: 90,
+            y3: 10,
+            rgba: "rgba(255, 0, 0, 0.5)", // Color with alpha
+        },
+        {
+            x1: 20,
+            y1: 20,
+            x2: 150,
+            y2: 150,
+            x3: 20,
+            y3: 110,
+            rgba: "rgba(255, 255, 0, 0.5)", // Color with alpha
+        },
+        {
+            x1: 50,
+            y1: 30,
+            x2: 20,
+            y2: 10,
+            x3: 100,
+            y3: 20,
+            rgba: "rgba(0, 0, 255, 0.5)", // Color with alpha
+        },
+    ];
+    const canvasWidth = 200;
+    const canvasHeight = 200;
+
+    const handleGenerateImage = () => {
+        // const imageDataUrl = generateTriangleImage(triangleData, canvasWidth, canvasHeight);
+        const imageDataUrl = generateTriangleImage2(generation.members[0].triangles, canvasWidth, canvasHeight);
+
+        // Perform actions with the imageDataUrl, such as sending it to a server or using it in your application
+        console.log("Image data URL:", imageDataUrl);
+
+        // Create a temporary anchor element
+        const a = document.createElement("a");
+        a.href = imageDataUrl;
+        a.download = "triangle.png";
+
+        // Trigger a click event on the anchor element to initiate the download
+        a.click();
+    };
+
+
 
     return (
         <>
             <div className="container_fullscreen playFair_text  sd_container1 bg_color7">
                 <div className="sd_heading9 font_size3">NEAT</div>
                 <div className="neat_container flexDirection_rowB_cols">
-                    <div className="sketch_box_neat roboto_text flex_center flexDirection_col  font_size_2_3">
-                        <div className="font_size_2_4 text_neat_sub"> Target Image</div>
-                        <div
-                            className="rect_frame"
-                            style={{
-                                width: sketch_width,
-                                height: sketch_height,
-                                // marginBottom: "3vh",
-                                backgroundColor: "peachpuff",
-                            }}
-                        >
-                            <img src={target1} style={{height:sketch_height,width:sketch_width}} className="target_image_neat_container" />
-                        </div>
-                    </div>
-
                     <div className="NEAT_Controls font_size_2_4">
                         <div className="NEAT_control_item">start</div>
                         <div className="NEAT_control_item">stop</div>
@@ -133,15 +157,11 @@ function NeatHome() {
                                 style={{ color: "#3ee8ac" }}
                             />
                         </div>
-                        <div
-                            className="NEAT_control_item font_size_2_3"
-                            onClick={() => captureImage_class(".rect_frame")}
-                        >
-                            Capture
-                        </div>
+                        <div className="NEAT_control_item font_size_2_3">Capture</div>
 
-                        <div className="NEAT_control_item" onClick={() => captureImage_dom()}>
-                            Capture
+                        <div className="NEAT_control_item">Capture</div>
+                        <div className="NEAT_control_item" onClick={handleGenerateImage}>
+                            Generate Triangle Image
                         </div>
                     </div>
                     <div className="sketch_box_neat roboto_text flex_center flexDirection_col  font_size_2_3">
@@ -176,7 +196,6 @@ function NeatHome() {
                                         );
                                     })}
                             </div>
-                            {/* <Triangle x1={100} y1={100} x2={0} y2={100} x3={50} y3={0} /> */}
                         </div>
                     </div>
                 </div>
@@ -185,4 +204,4 @@ function NeatHome() {
     );
 }
 
-export default NeatHome;
+export default SynthesizeDemo;

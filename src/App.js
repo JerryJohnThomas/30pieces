@@ -8,6 +8,8 @@ import { useEffect } from "react";
 import CompareHome from "./ImageComparator/CompareHome";
 import HomeLanding from "./Home/HomeLanding";
 import NeatHome from "./Neat/NeatHome";
+import SynthesizeDemo from "./Neat/SynthesizeDemo";
+import NeatHomeGrid from "./Neat/NeatHomeGrid";
 
 function App() {
     const [windowDimensions, setWindowDimensions] = useState({
@@ -56,7 +58,10 @@ let Everything_App = () => {
                 <Route path="/30pieces" element={<ShapeDemo />} />
                 <Route path="/train" element={<CompareHome />} />
                 <Route path="/neat" element={<NeatHome />} />
+                <Route path="/neat/grid" element={<NeatHomeGrid />} />
+                <Route path="/synthesis" element={<SynthesizeDemo />} />
                 <Route path="/" element={<HomeLanding />} />
+                <Route path="*" element={<HomeLanding />} />
             </Routes>
         </Router>
     );

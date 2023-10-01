@@ -15,7 +15,6 @@ function Triangle_svg() {
             <div className="container_fullscreen playFair_text  sd_container1">
                 <div className="sd_heading1 font_size3">Lets create a Triangle with SVG</div>
                 <div className="rect_frame" style={{ width: sketch_width, height: sketch_height, marginBottom: "3vh", border: "none" }}>
-                    {/* <div className="sd_triangle" style={{ marginLeft: `0px`, position: "absolute" }}></div> */}
                     <Triangle x1={100} y1={100} x2={0} y2={100} x3={50} y3={0}  />
                 </div>
 
