@@ -10,7 +10,7 @@ function HomeLanding() {
                 <div className="home_container flexDirection_rowB_cols">
                     <div className="roboto_text flex_center flexDirection_col  font_size_2_3">
                         <div className="button_pre_text font_size_2_4">How To Make a Triangle</div>
-                        <Button_custom text="here" url="/30pieces" />
+                        <Button_custom text="here" url="/triangle" />
                     </div>
 
                     <div className="roboto_text flex_center flexDirection_col font_size_2_3">
