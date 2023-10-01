@@ -1,6 +1,6 @@
 import Pokemon from "./Pokemon"
 class Generation {
-    constructor(max_population = 4, id = 1, canvas_height, canvas_width, max_polygons_per_pokemon=10) {
+    constructor(id = 1, max_population = 4, canvas_height, canvas_width, max_polygons_per_pokemon = 10) {
         this.max_population = max_population;
         this.id = id;
         this.members = [];

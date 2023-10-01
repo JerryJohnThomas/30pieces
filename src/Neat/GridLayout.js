@@ -2,45 +2,62 @@ import React from "react";
 import Triangle from "../Demo/Triangle";
 import "./GridLayout.css";
 
-function GridLayout({ generation, sketch_width, sketch_height }) {
+function GridLayout({ scale_multiplier, generation, sketch_width, sketch_height }) {
     return (
-        <div className="gridLayoutcontainer">
-            <div className="sketch_box_neat roboto_text flex_center flexDirection_col  font_size_2_3">
-                <div className="font_size_2_4 text_neat_sub"> Training Image </div>
-                <div
-                    className="rect_frame training1"
-                    style={{
-                        width: sketch_width,
-                        height: sketch_height,
-                        border: "none",
-                        backgroundColor: "peachpuff",
-                    }}
-                >
-                    <div>
-                        {generation &&
-                            generation.members[0] &&
-                            generation.members[0].triangles.map((triangle, index) => {
-                                return (
-                                    <Triangle
-                                        key={index}
-                                        x1={triangle.x1}
-                                        y1={triangle.y1}
-                                        x2={triangle.x2}
-                                        y2={triangle.y2}
-                                        x3={triangle.x3}
-                                        y3={triangle.y3}
-                                        rgba={triangle.rgba}
-                                        width={sketch_width}
-                                        height={sketch_height}
-                                    />
-                                );
-                            })}
+        <div className="gridLayoutcontainer image-grid " >
+            {/* {generation && generation.members[0] && (
+                <SingleRender
+                    pokemon={generation.members[0]}
+                    sketch_height={sketch_height / scale_multiplier}
+                    sketch_width={sketch_width / scale_multiplier}
+                />
+            )} */}
+            {generation &&
+                generation.members.map((pokemon, index) => (
+                    <div key={index}>
+                        <SingleRender
+                            scale_multiplier={scale_multiplier}
+                            pokemon={pokemon}
+                            sketch_height={sketch_height / scale_multiplier}
+                            sketch_width={sketch_width / scale_multiplier}
+                        />
                     </div>
-                    {/* <Triangle x1={100} y1={100} x2={0} y2={100} x3={50} y3={0} /> */}
-                </div>
-            </div>
+                ))}
         </div>
     );
 }
 
+let SingleRender = ({ scale_multiplier, pokemon, sketch_width, sketch_height }) => {
+    return (
+        <div
+            className="rect_frame training1"
+            style={{
+                width: sketch_width,
+                height: sketch_height,
+                border: "none",
+                backgroundColor: "peachpuff",
+            }}
+        >
+            <div>
+                {pokemon &&
+                    pokemon.triangles.map((triangle, index) => {
+                        return (
+                            <Triangle
+                                key={index}
+                                x1={triangle.x1 / scale_multiplier}
+                                y1={triangle.y1 / scale_multiplier}
+                                x2={triangle.x2 / scale_multiplier}
+                                y2={triangle.y2 / scale_multiplier}
+                                x3={triangle.x3 / scale_multiplier}
+                                y3={triangle.y3 / scale_multiplier}
+                                rgba={triangle.rgba}
+                                width={sketch_width}
+                                height={sketch_height}
+                            />
+                        );
+                    })}
+            </div>
+        </div>
+    );
+};
 export default GridLayout;

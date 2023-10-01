@@ -13,7 +13,7 @@
     align-items: center;
     /* background-color: aquamarine; */
     width: 100vw;
-    height: 70vh;
+    height: 80vh;
     
 }
 
@@ -66,7 +66,7 @@
     position: absolute;
     top:0;
     left:0;
-    background-color: aqua;
-    width: 20vw;
+    /* background-color: aqua; */
+    width: 10vw;
     height: 20vh;
 }

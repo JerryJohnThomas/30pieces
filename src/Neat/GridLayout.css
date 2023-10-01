@@ -1,5 +1,21 @@
 .gridLayoutcontainer{
-    background-color: lime;
+    /* background-color: lime; */
     width: 85%;
     height: 100%;
+    overflow: scroll;
+    position: relative;
+    /* margin:0 10vw; */
+    /* margin-right: 100px; */
+    /* -right: 400px; */
+}
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr); /* 10 columns */
+  grid-gap: 5px;
+}
+
+.image {
+  max-width: 100%; /* Ensure images fit within their containers */
+  height: auto; /* Maintain image aspect ratio */
 }

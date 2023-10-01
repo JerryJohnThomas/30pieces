@@ -14,12 +14,13 @@ import GridLayout from "./GridLayout";
 const sketch_size = 450;
 const sketch_height = sketch_size;
 const sketch_width = sketch_size;
-const max_population = 1;
-const shrink_factor=10;
+const shrink_factor = 5;
 
 function NeatHome() {
     const [maxPolygons, setMaxPolygons] = useState(5); // Initial value
-    let generationGlobal = new Generation(1, max_population, sketch_height, sketch_width, maxPolygons);
+    const [maxPopulation, setMaxPopulation] = useState(5); // Initial value
+    const [scaleMultiplier, setScaleMultiplier] = useState(2); // Initial value
+    let generationGlobal = new Generation(1, maxPopulation, sketch_height, sketch_width, maxPolygons);
     const [generation, setGeneration] = useState(generationGlobal);
     const [isLoaded, setIsloaded] = useState(false);
     const trainingOut1 = useRef(null);
@@ -32,7 +33,7 @@ function NeatHome() {
     let randomHandler = () => {
         console.log("trace: random Handler");
         // Populate the generation with random Pokemon when the component mounts
-        generationGlobal = new Generation(1, max_population, sketch_height, sketch_width, maxPolygons);
+        generationGlobal = new Generation(1, maxPopulation, sketch_height, sketch_width, maxPolygons);
         generationGlobal.random_populate();
         setGeneration(() => generationGlobal);
         console.log(generation);
@@ -40,6 +41,15 @@ function NeatHome() {
 
     const handleSliderChange = (event, value) => {
         setMaxPolygons(value);
+    };
+
+    const handleSliderChange2 = (event, value) => {
+        setMaxPopulation(value);
+    };
+
+    
+    const handleSliderChange3 = (event, value) => {
+        setScaleMultiplier(value);
     };
 
     function captureImage_class(class_name) {
@@ -103,20 +113,27 @@ function NeatHome() {
                         randomHandler={randomHandler}
                         maxPolygons={maxPolygons}
                         handleSliderChange={handleSliderChange}
+                        handleSliderChange2={handleSliderChange2}
+                        handleSliderChange3={handleSliderChange3}
+                        maxPopulation={maxPopulation}
+                        scaleMultiplier={scaleMultiplier}
                     />
-                    <GridLayout generation={generation} sketch_width={sketch_width} sketch_height={sketch_height} />
+                    <GridLayout
+                        scale_multiplier = {scaleMultiplier}
+                        generation={generation}
+                        sketch_width={sketch_width}
+                        sketch_height={sketch_height}
+                    />
                 </div>
             </div>
         </>
     );
 }
 
-
-
-let ShowTarget = () =>{
+let ShowTarget = () => {
     return (
         <div className="sketch_box_neat roboto_text flex_center flexDirection_col  font_size_2_3 absolute_grid_container">
-            <div className="font_size_2_4 text_neat_sub"> Target Image</div>
+            <div className="font_size_2_3 text_neat_sub"> Target Image</div>
             <div
                 className="rect_frame"
                 style={{
@@ -134,6 +151,6 @@ let ShowTarget = () =>{
             </div>
         </div>
     );
-}
+};
 
 export default NeatHome;
