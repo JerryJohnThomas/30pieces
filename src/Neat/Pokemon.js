@@ -8,6 +8,7 @@ class Pokemon {
         this.max_polygons = max_polygons;
         this.canvas_height = canvas_height;
         this.canvas_width = canvas_width;
+        this.image = null;
     }
 
     random_generate() {

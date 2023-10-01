@@ -27,6 +27,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    transform: translateY(-5vh);
 }
 .NEAT_control_item{
     margin: 5px 2px;

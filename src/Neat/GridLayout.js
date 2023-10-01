@@ -1,10 +1,10 @@
 import React from "react";
 import Triangle from "../Demo/Triangle";
 import "./GridLayout.css";
-
-function GridLayout({ scale_multiplier, generation, sketch_width, sketch_height }) {
+import DownloadIcon from "@mui/icons-material/Download";
+function GridLayout({ viewScore, scale_multiplier, generation, sketch_width, sketch_height, downloadMode }) {
     return (
-        <div className="gridLayoutcontainer image-grid " >
+        <div className="gridLayoutcontainer image-grid ">
             {/* {generation && generation.members[0] && (
                 <SingleRender
                     pokemon={generation.members[0]}
@@ -16,10 +16,12 @@ function GridLayout({ scale_multiplier, generation, sketch_width, sketch_height 
                 generation.members.map((pokemon, index) => (
                     <div key={index}>
                         <SingleRender
+                            viewScore={viewScore}
                             scale_multiplier={scale_multiplier}
                             pokemon={pokemon}
                             sketch_height={sketch_height / scale_multiplier}
                             sketch_width={sketch_width / scale_multiplier}
+                            downloadMode={downloadMode}
                         />
                     </div>
                 ))}
@@ -27,7 +29,21 @@ function GridLayout({ scale_multiplier, generation, sketch_width, sketch_height 
     );
 }
 
-let SingleRender = ({ scale_multiplier, pokemon, sketch_width, sketch_height }) => {
+let SingleRender = ({ viewScore, scale_multiplier, pokemon, sketch_width, sketch_height, downloadMode }) => {
+    const handleDownloadImage = (pokemon) => {
+        if (pokemon.image) {
+            const downloadLink = document.createElement("a");
+            downloadLink.href = pokemon.image.src;
+            downloadLink.download = `pokemon_image${pokemon.id}.png`; // Set the desired file name
+
+            // Trigger a click event on the download link to initiate the download
+            downloadLink.click();
+        } else {
+            alert("no image found, click on syntesize button before downloading");
+            console.error("Pokemon image not available.");
+        }
+    };
+
     return (
         <div
             className="rect_frame training1"
@@ -57,6 +73,29 @@ let SingleRender = ({ scale_multiplier, pokemon, sketch_width, sketch_height }) 
                         );
                     })}
             </div>
+            {viewScore && (
+                <div
+                    className="score_handle font_size3"
+                    style={{
+                        width: sketch_width,
+                        height: sketch_height,
+                    }}
+                >
+                    {pokemon.score}
+                </div>
+            )}
+
+            {downloadMode && (
+                <div
+                    className="score_handle font_size3"
+                    style={{
+                        width: sketch_width,
+                        height: sketch_height,
+                    }}
+                >
+                    <DownloadIcon className="button_download" onClick={() => handleDownloadImage(pokemon)} />
+                </div>
+            )}
         </div>
     );
 };

@@ -19,3 +19,23 @@
   max-width: 100%; /* Ensure images fit within their containers */
   height: auto; /* Maintain image aspect ratio */
 }
+
+
+.score_handle{
+  background-color: rgba(0,0,0,0.4);
+  position: absolute;
+  color:white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Courier New', Courier, monospace;
+} 
+/* 
+.button_download{
+  transition: all 1s ease-in;
+} */
+
+.button_download:hover{
+  color:gray;
+  transition: all 0.05s ease-in;
+}

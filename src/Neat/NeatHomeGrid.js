@@ -10,6 +10,8 @@ import { useRef } from "react";
 import domtoimage from "dom-to-image";
 import NeatControls from "./NeatControls";
 import GridLayout from "./GridLayout";
+import ShowTarget from "./ShowTarget";
+import generateTriangleImages from "./DataToImage";
 
 const sketch_size = 450;
 const sketch_height = sketch_size;
@@ -17,9 +19,11 @@ const sketch_width = sketch_size;
 const shrink_factor = 5;
 
 function NeatHome() {
-    const [maxPolygons, setMaxPolygons] = useState(5); // Initial value
-    const [maxPopulation, setMaxPopulation] = useState(5); // Initial value
-    const [scaleMultiplier, setScaleMultiplier] = useState(2); // Initial value
+    const [maxPolygons, setMaxPolygons] = useState(15); // Initial value
+    const [maxPopulation, setMaxPopulation] = useState(30); // Initial value
+    const [scaleMultiplier, setScaleMultiplier] = useState(2.5); // Initial value
+    const [viewScore, setViewScore] = useState(false);
+    const [downloadMode, setDownloadMode] = useState(false);
     let generationGlobal = new Generation(1, maxPopulation, sketch_height, sketch_width, maxPolygons);
     const [generation, setGeneration] = useState(generationGlobal);
     const [isLoaded, setIsloaded] = useState(false);
@@ -36,7 +40,7 @@ function NeatHome() {
         generationGlobal = new Generation(1, maxPopulation, sketch_height, sketch_width, maxPolygons);
         generationGlobal.random_populate();
         setGeneration(() => generationGlobal);
-        console.log(generation);
+        // console.log(generation);
     };
 
     const handleSliderChange = (event, value) => {
@@ -47,67 +51,57 @@ function NeatHome() {
         setMaxPopulation(value);
     };
 
-    
     const handleSliderChange3 = (event, value) => {
         setScaleMultiplier(value);
     };
 
-    function captureImage_class(class_name) {
-        // Find the target HTML element to capture
-        const targetElement = document.querySelector(class_name); // Replace with the appropriate selector
+    
+    const DownloadModeHandler = (e) => {
+        setDownloadMode((v) => !v);
+    };
 
-        // Use html2canvas to capture the element as an image
-        html2canvas(targetElement).then((canvas) => {
-            // Convert the canvas to a data URL
-            const imageDataUrl = canvas.toDataURL("image/png");
+    const viewScoreHandler = (e) => {
+        setViewScore((v) => !v);
+    };
 
-            // Create an "a" element to download the image
-            const a = document.createElement("a");
-            a.href = imageDataUrl;
-            a.download = "captured-image.png";
-            a.click();
-        });
-    }
+    const viewGeneration = () => {
+        console.log(generation);
+    };
 
-    function captureImage_ref() {
-        const container = trainingOut1.current;
+    const nextHandler = () => {};
+    const scoreHandler = () => {};
+    const synthesizeHandler = () => {
+        if (generation == null || generation.members.length === 0) return;
 
-        // Use html2canvas to capture the element as an image
-        html2canvas(container).then((canvas) => {
-            // Convert the canvas to a data URL
-            const imageDataUrl = canvas.toDataURL("image/png");
+        const promises = [];
 
-            // Create an "a" element to download the image
-            const a = document.createElement("a");
-            a.href = imageDataUrl;
-            a.download = "captured-image.png";
-            a.click();
-        });
-    }
+        for (let i = 0; i < generation.members.length; i++) {
+            const pokemon = generation.members[i];
+            const promise = generateTriangleImages(pokemon.triangles, sketch_width, sketch_height);
+            promises.push(promise);
+        }
 
-    const captureImage_dom = () => {
-        const container = trainingOut1.current;
-
-        // Use dom-to-image to capture the container as an image
-        domtoimage
-            .toPng(container)
-            .then((dataUrl) => {
-                // Create an "a" element to download the image
-                const a = document.createElement("a");
-                a.href = dataUrl;
-                a.download = "captured-image.png";
-                a.click();
+        // Use Promise.all to wait for all image generation promises to resolve
+        Promise.all(promises)
+            .then((images) => {
+                // 'images' is an array containing the generated images (HTML Image elements)
+                // You can now use or display these images as needed
+                for (let i = 0; i < images.length; i++) {
+                    const image = images[i];
+                    const pokemon = generation.members[i];
+                    pokemon.image = image; // Append the generated image to the 'image' parameter of the pokemon
+                }
             })
             .catch((error) => {
-                console.error("Error capturing image:", error);
+                console.error("Error generating images:", error);
             });
     };
 
     return (
         <>
             <div className="container_fullscreen playFair_text  sd_container1 bg_color7">
-                <ShowTarget />
-                <div className="sd_heading9 font_size3">NEAT</div>
+                {/* <ShowTarget target1={target1} sketch_width={sketch_width} sketch_height={sketch_height} shrink_factor={shrink_factor} /> */}
+                <div className="sd_heading9 font_size3 ">NEAT</div>
                 <div className="neat_container_full flexDirection_rowB_cols">
                     <NeatControls
                         randomHandler={randomHandler}
@@ -117,40 +111,29 @@ function NeatHome() {
                         handleSliderChange3={handleSliderChange3}
                         maxPopulation={maxPopulation}
                         scaleMultiplier={scaleMultiplier}
+                        viewScoreHandler={viewScoreHandler}
+                        viewGeneration={viewGeneration}
+                        target1={target1}
+                        sketch_height={sketch_height}
+                        sketch_width={sketch_width}
+                        shrink_factor={shrink_factor}
+                        nextHandler={nextHandler}
+                        synthesizeHandler={synthesizeHandler}
+                        scoreHandler={scoreHandler}
+                        DownloadModeHandler={DownloadModeHandler}
                     />
                     <GridLayout
-                        scale_multiplier = {scaleMultiplier}
+                        scale_multiplier={scaleMultiplier}
                         generation={generation}
                         sketch_width={sketch_width}
                         sketch_height={sketch_height}
+                        viewScore={viewScore}
+                        downloadMode={downloadMode}
                     />
                 </div>
             </div>
         </>
     );
 }
-
-let ShowTarget = () => {
-    return (
-        <div className="sketch_box_neat roboto_text flex_center flexDirection_col  font_size_2_3 absolute_grid_container">
-            <div className="font_size_2_3 text_neat_sub"> Target Image</div>
-            <div
-                className="rect_frame"
-                style={{
-                    width: sketch_width / shrink_factor,
-                    height: sketch_height / shrink_factor,
-                    // marginBottom: "3vh",
-                    backgroundColor: "peachpuff",
-                }}
-            >
-                <img
-                    src={target1}
-                    style={{ height: sketch_height / shrink_factor, width: sketch_width / shrink_factor }}
-                    className="target_image_neat_container"
-                />
-            </div>
-        </div>
-    );
-};
 
 export default NeatHome;

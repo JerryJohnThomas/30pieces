@@ -36,6 +36,7 @@ scrollbar-width: none;  /* Firefox */
     --medium-font-size: 23px;
     --small-med-font-size: 20px;
     --small-font-size: 17px;
+    --small-extra-small-font-size:13px;
     --extra-small-font-size: 9px;
 }
 
@@ -108,6 +109,10 @@ scrollbar-width: none;  /* Firefox */
 
 .font_size2 {
     font-size: var(--small-font-size);
+}
+
+.font_size_1_2 {
+    font-size: var(--small-extra-small-font-size);
 }
 
 .font_size1 {

@@ -7,6 +7,7 @@ class Generation {
         this.canvas_width = canvas_width;
         this.canvas_height = canvas_height;
         this.max_polygons_per_pokemon = max_polygons_per_pokemon;
+        this.target=null;
     }
 
     random_populate() {
