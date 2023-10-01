@@ -1,5 +1,5 @@
 //triangle.js
-class Triangle {
+export default class Triangle {
     constructor(x1, y1, x2, y2, x3, y3, rgba_color) {
         this.x1 = x1;
         this.y1 = y1;
@@ -11,4 +11,4 @@ class Triangle {
     }
 }
 
-module.exports = Triangle;
+// module.exports = Triangle;
