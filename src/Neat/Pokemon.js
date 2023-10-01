@@ -1,4 +1,4 @@
-import Triangle from "./Triangle";
+import Triangle from "./TriangleClass";
 //pokemon.js
 class Pokemon {
     constructor(id, triangles = [], max_polygons = 30, canvas_width = 100, canvas_height = 100) {
