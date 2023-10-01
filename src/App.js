@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, HashRouter } from "react-router-dom";
 import ShapeDemo from "./Demo/ShapeDemo";
 import { Scrollbar } from "react-scrollbars-custom";
 import "./App.css";
@@ -50,28 +50,30 @@ function App() {
         </>
     );
 }
-
+//change back to normal router once moved away fro m github pages
 let Everything_App = () => {
     return (
-        <Router>
-            <Routes>
-                <Route path="/" element={<HomeLanding />} />
-                <Route path="/30pieces" element={<ShapeDemo />} />
-                <Route path="/train" element={<CompareHome />} />
-                <Route path="/neat" element={<NeatHome />} />
-                <Route path="/neat/grid" element={<NeatHomeGrid />} />
-                <Route path="/synthesis" element={<SynthesizeDemo />} />
-                <Route path="*" element={<HomeLanding />} />
+        <HashRouter>
+            {/* <Router> */}
+                <Routes>
+                    <Route path="/" element={<HomeLanding />} />
+                    <Route path="/30pieces" element={<ShapeDemo />} />
+                    <Route path="/train" element={<CompareHome />} />
+                    <Route path="/neat" element={<NeatHome />} />
+                    <Route path="/neat/grid" element={<NeatHomeGrid />} />
+                    <Route path="/synthesis" element={<SynthesizeDemo />} />
+                    <Route path="*" element={<HomeLanding />} />
 
-                <Route path="/30pieces/" element={<HomeLanding />} />
-                <Route path="/30pieces/30pieces" element={<ShapeDemo />} />
-                <Route path="/30pieces/train" element={<CompareHome />} />
-                <Route path="/30pieces/neat" element={<NeatHome />} />
-                <Route path="/30pieces/neat/grid" element={<NeatHomeGrid />} />
-                <Route path="/30pieces/synthesis" element={<SynthesizeDemo />} />
-                <Route path="*" element={<HomeLanding />} />
-            </Routes>
-        </Router>
+                    <Route path="/30pieces/" element={<HomeLanding />} />
+                    <Route path="/30pieces/30pieces" element={<ShapeDemo />} />
+                    <Route path="/30pieces/train" element={<CompareHome />} />
+                    <Route path="/30pieces/neat" element={<NeatHome />} />
+                    <Route path="/30pieces/neat/grid" element={<NeatHomeGrid />} />
+                    <Route path="/30pieces/synthesis" element={<SynthesizeDemo />} />
+                    <Route path="*" element={<HomeLanding />} />
+                </Routes>
+            {/* </Router> */}
+        </HashRouter>
     );
 };
 
