@@ -27,6 +27,7 @@
 }
 .NEAT_control_item:hover{
     color: aquamarine;
+    cursor: pointer;
 }
 
 .sketch_box_neat{
