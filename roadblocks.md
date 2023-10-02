@@ -23,7 +23,7 @@
 ## neat to do list
 1. target_image storage with correct size 
 1. compare image function 
-    * add a size corrector on the comparer target when initiating only/
+    * add a size corrector on the comparer target when initiating only/ - this is not working, everything else seems to be good 
 1. score function
     
 1. mutate

@@ -25,16 +25,16 @@ class Generation {
         }
     }
 
-
     score_generation(){
         // console.log(this.members);
-        let comparer = new CompareImages(this.target_image);
+        let comparer = new CompareImages(this.target_image, this.canvas_width, this.canvas_height);
         for (let i = 0; i < this.max_population; i++) {
-            console.log(this.members[i]);
+            // console.log(this.members[i].image);
             if(this.members[i].image==null)
                 alert("Image not found (synthesized) yet, click on syntesize and then on score");
-            this.members[i].score = comparer.calculateMSE(this.members[i].image);
-            // this.members[i].score = 2.2;
+            let mse_val= comparer.calculateMSE(this.members[i].image);
+            // this.members[i].score = mse_val;
+            this.members[i].score = 2.2;
             break;
         }
         console.log("trace: score generation");
