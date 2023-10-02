@@ -17,3 +17,21 @@
 
 ## day
 * create triangle class and create pokemon class
+
+
+
+## neat to do list
+1. target_image storage with correct size 
+1. compare image function 
+    * add a size corrector on the comparer target when initiating only/
+1. score function
+    
+1. mutate
+1. populate
+
+
+
+
+
+
+

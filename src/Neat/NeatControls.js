@@ -20,11 +20,18 @@ function NeatControls({
     synthesizeHandler,
     scoreHandler,
     DownloadModeHandler,
+    downloadMode,
 }) {
     return (
         <div className="NEAT_Controls font_size_2_3" style={{ textAlign: "center" }}>
-            <ShowTarget target1={target1} sketch_width={sketch_width} sketch_height={sketch_height} shrink_factor={shrink_factor} />
-            <div className="NEAT_control_item" onScroll={scoreHandler}>
+            <ShowTarget
+                target1={target1}
+                sketch_width={sketch_width}
+                sketch_height={sketch_height}
+                shrink_factor={shrink_factor}
+                downloadMode={downloadMode}
+            />
+            <div className="NEAT_control_item" onClick={scoreHandler}>
                 Score Me
             </div>
             <div className="NEAT_control_item font_size_2_2" onClick={synthesizeHandler}>

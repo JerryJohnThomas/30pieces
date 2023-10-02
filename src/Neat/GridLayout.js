@@ -5,13 +5,6 @@ import DownloadIcon from "@mui/icons-material/Download";
 function GridLayout({ viewScore, scale_multiplier, generation, sketch_width, sketch_height, downloadMode }) {
     return (
         <div className="gridLayoutcontainer image-grid ">
-            {/* {generation && generation.members[0] && (
-                <SingleRender
-                    pokemon={generation.members[0]}
-                    sketch_height={sketch_height / scale_multiplier}
-                    sketch_width={sketch_width / scale_multiplier}
-                />
-            )} */}
             {generation &&
                 generation.members.map((pokemon, index) => (
                     <div key={index}>
@@ -51,7 +44,8 @@ let SingleRender = ({ viewScore, scale_multiplier, pokemon, sketch_width, sketch
                 width: sketch_width,
                 height: sketch_height,
                 border: "none",
-                backgroundColor: "peachpuff",
+                // backgroundColor: "peachpuff",
+                backgroundColor: "white",
             }}
         >
             <div>
