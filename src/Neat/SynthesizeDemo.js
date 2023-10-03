@@ -68,53 +68,13 @@ function SynthesizeDemo() {
     const handleSliderChange = (event, value) => {
         setMaxPolygons(value);
     };
-
-    // Example triangle data
-    const triangleData = {
-        x1: 10,
-        y1: 10,
-        x2: 50,
-        y2: 50,
-        x3: 90,
-        y3: 10,
-        rgba: "rgba(255, 0, 0, 0.5)", // Color with alpha
-    };
-
-    const triangleData2 = [
-        {
-            x1: 10,
-            y1: 10,
-            x2: 50,
-            y2: 50,
-            x3: 90,
-            y3: 10,
-            rgba: "rgba(255, 0, 0, 0.5)", // Color with alpha
-        },
-        {
-            x1: 20,
-            y1: 20,
-            x2: 150,
-            y2: 150,
-            x3: 20,
-            y3: 110,
-            rgba: "rgba(255, 255, 0, 0.5)", // Color with alpha
-        },
-        {
-            x1: 50,
-            y1: 30,
-            x2: 20,
-            y2: 10,
-            x3: 100,
-            y3: 20,
-            rgba: "rgba(0, 0, 255, 0.5)", // Color with alpha
-        },
-    ];
+    
     const canvasWidth = 200;
     const canvasHeight = 200;
 
-    const handleGenerateImage = () => {
+    const handleGenerateImage = (bgColor) => {
         // const imageDataUrl = generateTriangleImage(triangleData, canvasWidth, canvasHeight);
-        const imageDataUrl = generateTriangleImage2(generation.members[0].triangles, canvasWidth, canvasHeight);
+        const imageDataUrl = generateTriangleImage2(generation.members[0].triangles, canvasWidth, canvasHeight, bgColor);
 
         // Perform actions with the imageDataUrl, such as sending it to a server or using it in your application
         console.log("Image data URL:", imageDataUrl);

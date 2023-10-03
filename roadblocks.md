@@ -18,8 +18,6 @@
 ## day
 * create triangle class and create pokemon class
 
-
-
 ## neat to do list
 1. target_image storage with correct size 
 1. compare image function 
@@ -30,6 +28,14 @@
 1. populate
 
 
+addons
+* bgcolor
+* add blank image?
+* selector to choose type of loss function, mutation and reproduction
+
+next button is not working, 
+some triangles are randomly missing
+also the next generation is not getting setted.
 
 
 

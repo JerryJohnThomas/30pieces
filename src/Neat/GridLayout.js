@@ -45,7 +45,7 @@ let SingleRender = ({ viewScore, scale_multiplier, pokemon, sketch_width, sketch
                 height: sketch_height,
                 border: "none",
                 // backgroundColor: "peachpuff",
-                backgroundColor: "white",
+                backgroundColor: pokemon.bgColor,
             }}
         >
             <div>

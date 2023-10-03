@@ -9,6 +9,23 @@ export default class Triangle {
         this.y3 = y3;
         this.rgba = rgba_color;
     }
+
+    mutate(extend = 100){
+        // Mutate the triangle's properties
+        this.x1 += Math.random() * extend - extend / 2;
+        this.y1 += Math.random() * extend - extend / 2;
+        this.x2 += Math.random() * extend - extend / 2;
+        this.y2 += Math.random() * extend - extend / 2;
+        this.x3 += Math.random() * extend - extend / 2;
+        this.y3 += Math.random() * extend - extend / 2;
+
+        // Mutate the triangle's color
+        const red = Math.floor(Math.random() * 256);
+        const green = Math.floor(Math.random() * 256);
+        const blue = Math.floor(Math.random() * 256);
+        const alpha = Math.min(1, Math.random() + 0.5);
+        this.rgba = `rgba(${red},${green},${blue},${alpha})`;
+    }
 }
 
 // module.exports = Triangle;

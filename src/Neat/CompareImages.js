@@ -2,8 +2,11 @@ import Pixels from "image-pixels";
 import resizeImg from "resize-img"; // Import the resize-img librar
 import resizeImage from "resize-image";
 
+
+const mseNormaliser = 1000;
+const invertmseNormaliser = 1000000;
 class CompareImages {
-    // IMPORTANT, you have to call the rescale in the comparer functino as the first line 
+    // IMPORTANT, you have to call the rescale in the comparer functino as the first line
     constructor(target_image, sketch_width, sketch_height) {
         this.target_image = target_image;
         this.image2 = null;
@@ -43,9 +46,9 @@ class CompareImages {
         const pixels2 = await this.getPixelData(this.image2);
         const target_pixels = await this.getPixelData(this.target_image);
 
-        console.log("pixel data collected ");
-        console.log(target_pixels);
-        console.log(pixels2);
+        // console.log("pixel data collected ");
+        // console.log(target_pixels);
+        // console.log(pixels2);
 
         // Ensure both images have the same dimensions
         if (target_pixels.width !== pixels2.width || target_pixels.height !== pixels2.height) {
@@ -54,20 +57,38 @@ class CompareImages {
 
         let sumSquaredError = 0;
 
-        // Iterate through each pixel and calculate squared error
-        for (let y = 0; y < target_pixels.height; y++) {
-            for (let x = 0; x < target_pixels.width; x++) {
-                const pixel1 = target_pixels.get(x, y);
-                const pixel2 = pixels2.get(x, y);
-                const squaredError = Math.pow(pixel1.r - pixel2.r, 2); // Compare the red channel
-                sumSquaredError += squaredError;
-            }
+        // Iterate through each pixel and calculate squared error for RGB channels
+        for (let i = 0; i < target_pixels.data.length; i += 4) {
+            // Extract RGB values from the pixel data array
+            const pixel1 = {
+                r: target_pixels.data[i],
+                g: target_pixels.data[i + 1],
+                b: target_pixels.data[i + 2],
+            };
+
+            const pixel2 = {
+                r: pixels2.data[i],
+                g: pixels2.data[i + 1],
+                b: pixels2.data[i + 2],
+            };
+
+            // Compare the RGB channels (ignore alpha)
+            const squaredError = Math.pow(pixel1.r - pixel2.r, 2) + Math.pow(pixel1.g - pixel2.g, 2) + Math.pow(pixel1.b - pixel2.b, 2);
+
+            sumSquaredError += squaredError;
         }
 
         // Calculate mean squared error
-        const mse = sumSquaredError / (target_pixels.width * target_pixels.height);
+        let mse = sumSquaredError / (target_pixels.width * target_pixels.height);
+        // mse = mse / mseNormaliser;
+        mse = mse.toFixed(2);
 
-        return mse;
+        // Invert the score
+        let invertedScore = 1 / mse;
+        invertedScore = invertedScore * invertmseNormaliser;
+        invertedScore = invertedScore.toFixed(2);
+
+        return parseFloat(invertedScore);
     }
 
     // Add other comparison functions here

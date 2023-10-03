@@ -44,7 +44,7 @@
 //     a.click();
 // };
 
-export default function generateTriangleImages(triangleDataArray, canvasWidth, canvasHeight) {
+export default function generateTriangleImages(triangleDataArray, canvasWidth, canvasHeight, bgColor = "white") {
     return new Promise((resolve, reject) => {
         const canvas = document.createElement("canvas");
         canvas.width = canvasWidth;
@@ -52,20 +52,20 @@ export default function generateTriangleImages(triangleDataArray, canvasWidth, c
         const context = canvas.getContext("2d");
 
         // Fill the canvas with a white background
-        context.fillStyle = "white";
+        context.fillStyle = bgColor;
         context.fillRect(0, 0, canvasWidth, canvasHeight);
 
         for (const triangle of triangleDataArray) {
-                // Draw each triangle using the provided data
-                context.beginPath();
-                context.moveTo(triangle.x1, triangle.y1);
-                context.lineTo(triangle.x2, triangle.y2);
-                context.lineTo(triangle.x3, triangle.y3);
-                context.closePath();
+            // Draw each triangle using the provided data
+            context.beginPath();
+            context.moveTo(triangle.x1, triangle.y1);
+            context.lineTo(triangle.x2, triangle.y2);
+            context.lineTo(triangle.x3, triangle.y3);
+            context.closePath();
 
-                // Fill the triangle with a color
-                context.fillStyle = triangle.rgba || "black";
-                context.fill();
+            // Fill the triangle with a color
+            context.fillStyle = triangle.rgba || "black";
+            context.fill();
         }
 
         // Create an HTML Image element and set its source to the generated image

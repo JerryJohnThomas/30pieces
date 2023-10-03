@@ -13,10 +13,12 @@ import GridLayout from "./GridLayout";
 import ShowTarget from "./ShowTarget";
 import generateTriangleImages from "./DataToImage";
 
-const sketch_size = 1;
+const sketch_size = 450;
 const sketch_height = sketch_size;
 const sketch_width = sketch_size;
 const shrink_factor = 5;
+// const bgColor = "white";
+const bgColor = "black";
 
 function NeatHome() {
     const [maxPolygons, setMaxPolygons] = useState(15); // Initial value
@@ -24,7 +26,7 @@ function NeatHome() {
     const [scaleMultiplier, setScaleMultiplier] = useState(2.5); // Initial value
     const [viewScore, setViewScore] = useState(false);
     const [downloadMode, setDownloadMode] = useState(false);
-    let generationGlobal = new Generation(1, maxPopulation, sketch_height, sketch_width, maxPolygons, target1);
+    let generationGlobal = new Generation(1, maxPopulation, sketch_height, sketch_width, maxPolygons, target1, bgColor);
     const [generation, setGeneration] = useState(generationGlobal);
     const [isLoaded, setIsloaded] = useState(false);
     const trainingOut1 = useRef(null);
@@ -37,8 +39,9 @@ function NeatHome() {
     let randomHandler = () => {
         console.log("trace: random Handler");
         // Populate the generation with random Pokemon when the component mounts
-        generationGlobal = new Generation(1, maxPopulation, sketch_height, sketch_width, maxPolygons, target1);
-        generationGlobal.random_populate();
+        generationGlobal = new Generation(1, maxPopulation, sketch_height, sketch_width, maxPolygons, target1, bgColor);
+        // generationGlobal.random_populate();
+        generationGlobal.random_populate_withWhite();
         setGeneration(() => generationGlobal);
         // console.log(generation);
     };
@@ -67,11 +70,11 @@ function NeatHome() {
         console.log(generation);
     };
 
-    const nextHandler = () => {};
+    const nextHandler = () => {
+        generation.next_generation();
+        setGeneration(() => generation);
+    };
     const scoreHandler = () => {
-        // generationGlobal.score_generation();
-        // setGeneration(() => generationGlobal);
-
         generation.score_generation();
         setGeneration(() => generation);
     };
@@ -82,7 +85,7 @@ function NeatHome() {
 
         for (let i = 0; i < generation.members.length; i++) {
             const pokemon = generation.members[i];
-            const promise = generateTriangleImages(pokemon.triangles, sketch_width, sketch_height);
+            const promise = generateTriangleImages(pokemon.triangles, sketch_width, sketch_height, bgColor);
             promises.push(promise);
         }
 

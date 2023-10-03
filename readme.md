@@ -19,6 +19,9 @@ I hope that we can start off with NEAT ALgo, move to RL algo's for replication, 
 Inspiration, I was once inspired by an youtube video attempting this on Mona Lisa in python, (ill put up reference if I find it)
 **I need more ideas desperately 😊**
 
+Read more about each of the methods below
+1. [NEAT](./Algo_Methods_Doc/readme.md)
+
 ## Duration?
 Always "Coding in Progress".  
 
