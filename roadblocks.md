@@ -39,6 +39,11 @@ also the next generation is not getting setted.
 
 
 
+the mutate and copy functions not workging
+how do i know this ?
+mutate returning stuff with undefined triangles
+copy returning pokemon without an image ..
+
 
 
 

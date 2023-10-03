@@ -67,7 +67,12 @@ class Pokemon {
     mutate(epsilon, extend) {
         for (let i = 0; i < this.triangles.length; i++) {
             let r = Math.random();
-            if (r <= epsilon) this.triangles[i] = this.triangles[i].mutate(extend);
+            if (r <= epsilon)
+            {
+                console.log("calling mutate on pokemon", this.id,  " on triangle", i);
+                this.triangles[i].mutate(extend);
+
+            }
         }
     }
 

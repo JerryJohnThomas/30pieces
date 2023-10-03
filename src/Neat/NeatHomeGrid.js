@@ -21,8 +21,8 @@ const shrink_factor = 5;
 const bgColor = "black";
 
 function NeatHome() {
-    const [maxPolygons, setMaxPolygons] = useState(15); // Initial value
-    const [maxPopulation, setMaxPopulation] = useState(30); // Initial value
+    const [maxPolygons, setMaxPolygons] = useState(5); // Initial value
+    const [maxPopulation, setMaxPopulation] = useState(3); // Initial value
     const [scaleMultiplier, setScaleMultiplier] = useState(2.5); // Initial value
     const [viewScore, setViewScore] = useState(false);
     const [downloadMode, setDownloadMode] = useState(false);

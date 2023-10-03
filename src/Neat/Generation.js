@@ -11,7 +11,7 @@ class Generation {
         bgColor = "white",
         fitness_sorted_indices = [],
         generation_count = 1,
-        epsilon = 0.2,
+        epsilon = 0.5,
         mutate_extend = 100
     ) {
         this.max_population = max_population;
@@ -65,16 +65,13 @@ class Generation {
             scores_generation.push({ score: inverted_mse_val });
             // console.log("trace:member ", i, " score: ", inverted_mse_val);
         }
-        console.log(scores_generation);
     }
 
     next_generation() {
         this.calculate_fitness();
-        console.log(this.members);
         this.repopulate();
-        // reproduce them
+        this.fitness_sorted_indices = [];
         console.log("trace: next generation completed");
-        console.log(this.members);
     }
 
     calculate_fitness() {

@@ -12,12 +12,12 @@ export default class Triangle {
 
     mutate(extend = 100){
         // Mutate the triangle's properties
-        this.x1 += Math.random() * extend - extend / 2;
-        this.y1 += Math.random() * extend - extend / 2;
-        this.x2 += Math.random() * extend - extend / 2;
-        this.y2 += Math.random() * extend - extend / 2;
-        this.x3 += Math.random() * extend - extend / 2;
-        this.y3 += Math.random() * extend - extend / 2;
+        this.x1 += parseInt(Math.random() * extend - (extend / 2));
+        this.y1 += parseInt(Math.random() * extend - (extend / 2));
+        this.x2 += parseInt(Math.random() * extend - (extend / 2));
+        this.y2 += parseInt(Math.random() * extend - (extend / 2));
+        this.x3 += parseInt(Math.random() * extend - (extend / 2));
+        this.y3 += parseInt(Math.random() * extend - (extend / 2));
 
         // Mutate the triangle's color
         const red = Math.floor(Math.random() * 256);
