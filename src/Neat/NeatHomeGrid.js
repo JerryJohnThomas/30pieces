@@ -13,7 +13,7 @@ import GridLayout from "./GridLayout";
 import ShowTarget from "./ShowTarget";
 import generateTriangleImages from "./DataToImage";
 
-const sketch_size = 450;
+const sketch_size = 1;
 const sketch_height = sketch_size;
 const sketch_width = sketch_size;
 const shrink_factor = 5;

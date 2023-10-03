@@ -3,26 +3,12 @@ import resizeImg from "resize-img"; // Import the resize-img librar
 import resizeImage from "resize-image";
 
 class CompareImages {
-    // constructor(target_image, sketch_width, sketch_height) {
-    //     this.rescaleTargetImage(target_image);
-    //     // this.target_image = target_image;
-    //     this.image2 = null;
-    //     this.sketch_width = sketch_width;
-    //     this.sketch_height = sketch_height;
-    // }
-
+    // IMPORTANT, you have to call the rescale in the comparer functino as the first line 
     constructor(target_image, sketch_width, sketch_height) {
-        // Rescale the target image and set it as the target_image property
-        this.rescaleTargetImage(target_image, sketch_width, sketch_height)
-            .then((rescaledImage) => {
-                this.target_image = rescaledImage;
-                this.image2 = null;
-                this.sketch_width = sketch_width;
-                this.sketch_height = sketch_height;
-            })
-            .catch((error) => {
-                console.error("Error while rescaling the target image:", error);
-            });
+        this.target_image = target_image;
+        this.image2 = null;
+        this.sketch_width = sketch_width;
+        this.sketch_height = sketch_height;
     }
 
     async rescaleTargetImage(target_image) {
@@ -30,45 +16,6 @@ class CompareImages {
         let Img = new Image();
         Img.src = data;
         return Img;
-    }
-
-    async rescaleTargetImage2(target_image) {
-        if (!(target_image instanceof HTMLImageElement)) {
-            console.error("Invalid target image provided.");
-            return;
-        }
-
-        try {
-            // Fetch the image as a Blob
-            const response = await fetch(target_image.src);
-            const imageBlob = await response.blob();
-
-            // Read the image data as a data URL
-            const reader = new FileReader();
-            reader.onload = () => {
-                const dataUrl = reader.result;
-
-                // Use resize-img to rescale the target image
-                const resizedBuffer = resizeImg(dataUrl, {
-                    width: this.sketch_width,
-                    height: this.sketch_height,
-                });
-
-                // Convert the resized image buffer to a Data URL
-                const rescaledImageSrc = `data:image/png;base64,${resizedBuffer.toString("base64")}`;
-
-                // Create a new Image object for the rescaled image
-                const rescaledImage = new Image();
-                rescaledImage.src = rescaledImageSrc;
-
-                return rescaledImage;
-            };
-
-            // Read the image blob as a data URL
-            reader.readAsDataURL(imageBlob);
-        } catch (error) {
-            console.error("Error while rescaling the target image:", error);
-        }
     }
 
     async getPixelData(image) {
@@ -87,8 +34,9 @@ class CompareImages {
     }
 
     async calculateMSE(image2) {
-        console.log(this.target_image);
-        console.log(image2);
+        await this.rescaleTargetImage(this.target_image).then((rescaledImage) => {
+            this.target_image = rescaledImage;
+        });
 
         // this is the current_image
         this.image2 = image2;
