@@ -64,12 +64,29 @@ class Pokemon {
         }
     }
 
+
+    random_generate_bgcolor() {
+        for (let i = 0; i < this.max_polygons; i++) {
+            const x1 = (Math.random() * this.canvas_width).toFixed(2);
+            const y1 = (Math.random() * this.canvas_height).toFixed(2);
+
+            const x2 = (Math.random() * this.canvas_width).toFixed(2);
+            const y2 = (Math.random() * this.canvas_height).toFixed(2);
+
+            const x3 = (Math.random() * this.canvas_width).toFixed(2);
+            const y3 = (Math.random() * this.canvas_height).toFixed(2);
+
+            this.triangles.push(new Triangle(parseInt(x1), parseInt(y1), parseInt(x2), parseInt(y2), parseInt(x3), parseInt(y3), this.bgColor));
+        }
+    }
+
+    
     mutate(epsilon, extend) {
         for (let i = 0; i < this.triangles.length; i++) {
             let r = Math.random();
             if (r <= epsilon)
             {
-                console.log("calling mutate on pokemon", this.id,  " on triangle", i);
+                // console.log("calling mutate on pokemon", this.id,  " on triangle", i);
                 this.triangles[i].mutate(extend);
 
             }
@@ -78,7 +95,9 @@ class Pokemon {
 
     reproduce(pokemon_wife, uid) {
         const childTriangles = [];
-
+        // console.log("reprodce", `${uid}`);
+        // console.log(this.triangles);
+        // console.log(pokemon_wife.triangles);
         for (let i = 0; i < this.triangles.length; i++) {
             if (Math.random() < 0.5) {
                 // Take a triangle from the father

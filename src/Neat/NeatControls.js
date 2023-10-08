@@ -21,6 +21,7 @@ function NeatControls({
     scoreHandler,
     DownloadModeHandler,
     downloadMode,
+    DoAllEvolve
 }) {
     return (
         <div className="NEAT_Controls font_size_2_3" style={{ textAlign: "center" }}>
@@ -40,6 +41,12 @@ function NeatControls({
             <div className="NEAT_control_item" onClick={nextHandler}>
                 NEXT
             </div>
+
+            <div className="NEAT_control_item" onClick={DoAllEvolve}>
+                ScoreNext
+            </div>
+
+
             <div className="NEAT_control_item" onClick={randomHandler}>
                 Random
             </div>

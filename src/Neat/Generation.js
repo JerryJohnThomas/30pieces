@@ -102,7 +102,9 @@ class Generation {
             pokemon.random_generate(); // Call the random_generate method to generate triangles
             this.members.push(pokemon);
         }
+
         const pokemon = new Pokemon(this.max_population - 1, [], this.max_polygons_per_pokemon, this.canvas_height, this.canvas_width, this.bgColor);
+        pokemon.random_generate_bgcolor();
         this.members.push(pokemon);
     }
 
@@ -121,7 +123,23 @@ class Generation {
         }
     }
 
+    isScoreGenerated(){
+        let flag = true;
+        for(let i=0;i<this.members.length;i++)
+        {
+            if(this.members[i].score == 0)
+                return false;
+        }
+        return true;
+    }
+
     next_generation() {
+        let check = this.isScoreGenerated();
+        if (check == false)
+        {
+            alert("Score is not generated, synthesise and score");
+            return;
+        }
         this.calculate_fitness();
         this.repopulate();
         this.fitness_sorted_indices = [];
@@ -155,7 +173,6 @@ class Generation {
         index--;
 
         let target_index = this.fitness_sorted_indices[index];
-
         let pokemon = this.members[target_index];
         let copy_pokemon = pokemon.copy2();
         copy_pokemon.mutate(this.epsilon, this.mutate_extend);

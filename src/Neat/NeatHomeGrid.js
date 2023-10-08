@@ -22,7 +22,7 @@ const bgColor = "black";
 
 function NeatHome() {
     const [maxPolygons, setMaxPolygons] = useState(13); // Initial value
-    const [maxPopulation, setMaxPopulation] = useState(25); // Initial value
+    const [maxPopulation, setMaxPopulation] = useState(5); // Initial value
     const [scaleMultiplier, setScaleMultiplier] = useState(3.5); // Initial value
     const [viewScore, setViewScore] = useState(false);
     const [downloadMode, setDownloadMode] = useState(false);
@@ -32,9 +32,20 @@ function NeatHome() {
     const trainingOut1 = useRef(null);
 
     useEffect(() => {
+        window.addEventListener("keydown", handleKeyPress);
         // Populate the generation with random Pokemon when the component mounts
         randomHandler();
     }, []);
+
+
+    const handleKeyPress = (event) => {
+        // Check if the pressed key is the one you want (e.g., "Enter" key with keycode 13)
+        if (event.key === "a") synthesizeHandler();
+        else if (event.key === "s") scoreHandler();
+        else if (event.key === "d") nextHandler();
+        else if (event.key === "z") viewScoreHandler();
+        else if (event.key === "x") DownloadModeHandler();
+      };
 
     let randomHandler = () => {
         console.log("trace: random Handler");
@@ -69,6 +80,13 @@ function NeatHome() {
     const viewGeneration = () => {
         console.log(generation);
     };
+
+    const DoAllEvolve = async () => {
+        // let x = synthesizeHandler().then(async (data)=> await scoreHandler().then(async (d) => await nextHandler()));
+        // console.log(x);
+        await scoreHandler();
+        await nextHandler();
+    }
 
     const nextHandler = () => {
         generation.next_generation();
@@ -133,6 +151,7 @@ function NeatHome() {
                         scoreHandler={scoreHandler}
                         DownloadModeHandler={DownloadModeHandler}
                         downloadMode={downloadMode}
+                        DoAllEvolve = {DoAllEvolve}
                     />
                     <GridLayout
                         scale_multiplier={scaleMultiplier}
