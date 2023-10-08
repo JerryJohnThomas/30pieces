@@ -36,6 +36,11 @@ class CompareImages {
         return pixels;
     }
 
+    async calculateMSEMAX(){
+        let score = await this.calculateMSE(this.target_image);
+        return score;   
+    }
+
     async calculateMSE(image2) {
         await this.rescaleTargetImage(this.target_image).then((rescaledImage) => {
             this.target_image = rescaledImage;

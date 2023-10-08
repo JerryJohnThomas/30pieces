@@ -31,7 +31,7 @@ class Pokemon {
         return new Pokemon(id, [...triangles], max_polygons, canvas_width, canvas_height, bgColor, score, fitness, image);
     }
 
-    copy2(){
+    copy2() {
         return new Pokemon(
             this.id,
             [...this.triangles],
@@ -80,16 +80,25 @@ class Pokemon {
         }
     }
 
-    
+
+    mutate_ver0(epsilon, extend) {
+        for (let i = 0; i < this.triangles.length; i++) {
+            let r = Math.random();
+            if (r <= epsilon)
+                this.triangles[i].mutate(extend);
+        }
+    }
+
+
     mutate(epsilon, extend) {
         for (let i = 0; i < this.triangles.length; i++) {
             let r = Math.random();
             if (r <= epsilon)
-            {
-                // console.log("calling mutate on pokemon", this.id,  " on triangle", i);
+                this.triangles[i] = this.triangles[i].random(this.canvas_height, this.canvas_width);
+
+            else if (r <= 2 * epsilon)
                 this.triangles[i].mutate(extend);
 
-            }
         }
     }
 

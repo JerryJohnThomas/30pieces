@@ -1,4 +1,6 @@
 import React from "react";
+import { useEffect } from "react";
+import { useState } from "react";
 import Slider from "@mui/material/Slider";
 import ShowTarget from "./ShowTarget";
 
@@ -23,6 +25,25 @@ function NeatControls({
     downloadMode,
     DoAllEvolve
 }) {
+
+    const [isContinuousEvolution, setIsContinuousEvolution] = useState(false);
+
+    function toggleContinuousEvolution() {
+        setIsContinuousEvolution((prev) => !prev);
+      }
+      
+    useEffect(() => {
+        if (isContinuousEvolution) {
+          const intervalId = setInterval(() => {
+            DoAllEvolve();
+          }, 500);
+      
+          // Clean up the interval when the component unmounts or when continuous evolution is turned off.
+          return () => clearInterval(intervalId);
+        }
+      }, [isContinuousEvolution]);
+
+      
     return (
         <div className="NEAT_Controls font_size_2_3" style={{ textAlign: "center" }}>
             <ShowTarget
@@ -43,7 +64,11 @@ function NeatControls({
             </div>
 
             <div className="NEAT_control_item" onClick={DoAllEvolve}>
-                ScoreNext
+                Evolve
+            </div>
+
+            <div className="NEAT_control_item" onClick={() => toggleContinuousEvolution()}>
+                Evolve Loop
             </div>
 
 

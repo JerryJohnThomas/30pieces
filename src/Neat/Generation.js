@@ -121,6 +121,10 @@ class Generation {
             this.members[i].score = inverted_mse_val;
             scores_generation.push({ score: inverted_mse_val });
         }
+
+        let y = await comparer.calculateMSEMAX();
+        console.log("MSE SELF MAX",y);
+
     }
 
     isScoreGenerated(){
@@ -143,7 +147,6 @@ class Generation {
         this.calculate_fitness();
         this.repopulate();
         this.fitness_sorted_indices = [];
-        console.log("trace: next generation completed");
     }
 
     calculate_fitness() {

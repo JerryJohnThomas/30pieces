@@ -79,19 +79,30 @@ function NeatHome() {
 
     const viewGeneration = () => {
         console.log(generation);
+
+        let scores = [];
+        for(let poke of generation.members)
+            scores.push(poke.score);
+        console.log("scores: ", scores);
     };
 
     const DoAllEvolve = async () => {
         // let x = synthesizeHandler().then(async (data)=> await scoreHandler().then(async (d) => await nextHandler()));
         // console.log(x);
-        await scoreHandler();
-        await nextHandler();
+
+        synthesizeHandler();
+        setTimeout(() => {
+            scoreHandler();
+          }, 50);
+          setTimeout(() => {
+              nextHandler();
+          }, 100);
+
     }
 
     const nextHandler = () => {
         generation.next_generation();
         let generationCopy = generation.deepCopy();
-        console.log(generationCopy);
         setGeneration(generationCopy);
     };
     const scoreHandler = async () => {

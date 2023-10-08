@@ -17,10 +17,13 @@
 * invert mse of very pixel in three channels
 
 ### mutation
-* not sure
+* mutate each of the pokemons triangle with epsilon probability and with extend 
 
 ### reproduction
 * https://www.youtube.com/watch?v=YtRA6tqgJBc
+
+
+
 
 
 
