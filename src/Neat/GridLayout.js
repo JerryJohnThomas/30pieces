@@ -5,10 +5,11 @@ import DownloadIcon from "@mui/icons-material/Download";
 function GridLayout({ viewScore, scale_multiplier, generation, sketch_width, sketch_height, downloadMode }) {
     return (
         <div className="gridLayoutcontainer image-grid ">
-            {generation &&
+            {generation && generation.members &&
                 generation.members.map((pokemon, index) => (
                     <div key={index}>
                         <SingleRender
+                            key={index}
                             viewScore={viewScore}
                             scale_multiplier={scale_multiplier}
                             pokemon={pokemon}

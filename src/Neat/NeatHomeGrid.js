@@ -21,9 +21,9 @@ const shrink_factor = 5;
 const bgColor = "black";
 
 function NeatHome() {
-    const [maxPolygons, setMaxPolygons] = useState(5); // Initial value
-    const [maxPopulation, setMaxPopulation] = useState(3); // Initial value
-    const [scaleMultiplier, setScaleMultiplier] = useState(2.5); // Initial value
+    const [maxPolygons, setMaxPolygons] = useState(13); // Initial value
+    const [maxPopulation, setMaxPopulation] = useState(25); // Initial value
+    const [scaleMultiplier, setScaleMultiplier] = useState(3.5); // Initial value
     const [viewScore, setViewScore] = useState(false);
     const [downloadMode, setDownloadMode] = useState(false);
     let generationGlobal = new Generation(1, maxPopulation, sketch_height, sketch_width, maxPolygons, target1, bgColor);
@@ -72,11 +72,14 @@ function NeatHome() {
 
     const nextHandler = () => {
         generation.next_generation();
-        setGeneration(() => generation);
+        let generationCopy = generation.deepCopy();
+        console.log(generationCopy);
+        setGeneration(generationCopy);
     };
-    const scoreHandler = () => {
-        generation.score_generation();
-        setGeneration(() => generation);
+    const scoreHandler = async () => {
+        await generation.score_generation();
+        let copyGeneration = generation.deepCopy();
+        setGeneration(copyGeneration);
     };
     const synthesizeHandler = () => {
         if (generation == null || generation.members.length === 0) return;

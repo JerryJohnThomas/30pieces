@@ -12,11 +12,12 @@ class Generation {
         fitness_sorted_indices = [],
         generation_count = 1,
         epsilon = 0.5,
-        mutate_extend = 100
+        mutate_extend = 100, 
+        members = []
     ) {
         this.max_population = max_population;
         this.id = id;
-        this.members = [];
+        this.members = members;
         this.fitness_sorted_indices = fitness_sorted_indices;
         this.canvas_width = canvas_width;
         this.canvas_height = canvas_height;
@@ -32,6 +33,58 @@ class Generation {
         targetImg.src = target_path;
         this.target_image = targetImg;
     }
+
+
+    deepCopy() {
+        return new Generation(
+            this.id,
+            this.max_population,
+            this.canvas_height,
+            this.canvas_width,
+            this.max_polygons_per_pokemon,
+            this.target_path,
+            this.bgColor,
+            this.fitness_sorted_indices, // Create a shallow copy of the indices array
+            this.generation_count,
+            this.epsilon,
+            this.mutate_extend,
+            this.members
+        );
+    }
+
+
+    copyAnother(existingGeneration) {
+        const {
+            id,
+            max_population,
+            canvas_height,
+            canvas_width,
+            max_polygons_per_pokemon,
+            target_path,
+            bgColor,
+            fitness_sorted_indices,
+            generation_count,
+            epsilon,
+            mutate_extend,
+            members
+        } = existingGeneration;
+
+        return new Generation(
+            id,
+            max_population,
+            canvas_height,
+            canvas_width,
+            max_polygons_per_pokemon,
+            target_path,
+            bgColor,
+            fitness_sorted_indices,    // Create a shallow copy of the indices array
+            generation_count,
+            epsilon,
+            mutate_extend,
+            members
+        );
+    }
+
 
     random_populate() {
         this.members = [];
@@ -58,12 +111,13 @@ class Generation {
         let comparer = new CompareImages(this.target_image, this.canvas_width, this.canvas_height);
         for (let i = 0; i < this.max_population; i++) {
             // console.log(this.members[i].image);
-            if (this.members[i].image == null) alert("Image not found (synthesized) yet, click on syntesize and then on score");
+            if (this.members[i].image == null) {
+                alert("Image not found (synthesized) yet, click on syntesize and then on score");
+                return;
+            }
             let inverted_mse_val = await comparer.calculateMSE(this.members[i].image);
             this.members[i].score = inverted_mse_val;
-
             scores_generation.push({ score: inverted_mse_val });
-            // console.log("trace:member ", i, " score: ", inverted_mse_val);
         }
     }
 
