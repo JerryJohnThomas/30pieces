@@ -2,6 +2,7 @@ import React from "react";
 import "./NeatHome.css";
 import Triangle from "../Demo/Triangle";
 import target1 from "./assets/post_processing/target1.png";
+// import target1 from "./assets/post_processing/step_up/triangle_red_1x.png";
 import Generation from "./Generation";
 import { useEffect } from "react";
 import { useState } from "react";
@@ -17,8 +18,8 @@ const sketch_size = 450;
 const sketch_height = sketch_size;
 const sketch_width = sketch_size;
 const shrink_factor = 5;
-// const bgColor = "white";
-const bgColor = "black";
+const bgColor = "white";
+// const bgColor = "black";
 
 function NeatHome() {
     const [maxPolygons, setMaxPolygons] = useState(13); // Initial value
